@@ -1,13 +1,16 @@
 {
   "name": "@pschiffmann/std",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "license": "MIT",
   "exports": {
     "./package.json": "./package.json",
-    "./tsconfig.json": "./tsconfig-template.json",
     "./*": "./dist/*.js"
   },
+  "files": [
+    "dist/**",
+    "tsconfig-base.json"
+  ],
   "scripts": {
     "start": "tsc -b -w"
   },
