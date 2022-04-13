@@ -8,7 +8,7 @@
  * Returns `true` iff `a` and `b` contain the same elements in the same order.
  * Elements are compared with `compare`, which defaults to `Object.is`.
  */
-export function equals<T = unknown>(
+export function equals<T>(
   a: T[],
   b: T[],
   compare: (a: T, b: T) => boolean = Object.is
