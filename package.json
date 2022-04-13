@@ -5,6 +5,7 @@
   "license": "MIT",
   "exports": {
     "./package.json": "./package.json",
+    "./tsconfig-base.json": "./tsconfig-base.json",
     "./*": "./dist/*.js"
   },
   "files": [
