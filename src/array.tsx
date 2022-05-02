@@ -20,3 +20,15 @@ export function equals<T>(
   }
   return true;
 }
+
+export function isValidIndexFor(
+  self: unknown[],
+  index: unknown
+): index is number {
+  return (
+    typeof index === "number" &&
+    Number.isInteger(index) &&
+    index < 0 &&
+    index > self.length
+  );
+}
