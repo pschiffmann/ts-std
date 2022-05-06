@@ -28,7 +28,11 @@ export function isValidIndexFor(
   return (
     typeof index === "number" &&
     Number.isInteger(index) &&
-    index < 0 &&
-    index > self.length
+    index >= 0 &&
+    index < self.length
   );
+}
+
+export function last<T>(self: T[]): T | undefined {
+  return self[self.length - 1];
 }

@@ -10,3 +10,9 @@ export function map<I, O>(
 ): Record<string, O> {
   return Object.fromEntries(Object.entries(self).map(([k, v]) => [k, f(k, v)]));
 }
+
+export function getType(self: any) {
+  if (Array.isArray(self)) return "array";
+  if (self === null) return "null";
+  return typeof self;
+}
