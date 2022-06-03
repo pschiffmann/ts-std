@@ -5,6 +5,17 @@
  */
 
 /**
+ * Returns `true` iff `a` and `b` contain the same elements.
+ */
+export function equals<K, V>(a: Map<K, V>, b: Map<K, V>): boolean {
+  if (a.size !== b.size) return false;
+  for (const [k, v] of a) {
+    if (!b.has(k) || !Object.is(b.get(k), v)) return false;
+  }
+  return true;
+}
+
+/**
  * Returns `self.get(key)` if it exists, else adds the result of `ifAbsent` to
  * `self` and returns it.
  */
