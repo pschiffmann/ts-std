@@ -25,6 +25,19 @@ export function* diff<T>(a: Set<T>, b: Set<T>): Iterable<T> {
   }
 }
 
+export function* intersection<T>(a: Set<T>, b: Set<T>): Iterable<T> {
+  for (const el of a) {
+    if (b.has(el)) yield el;
+  }
+}
+
+export function* union<T>(a: Set<T>, b: Set<T>): Iterable<T> {
+  yield* a;
+  for (const el of b) {
+    if (!a.has(el)) yield el;
+  }
+}
+
 /**
  * Returns `true` iff `self` contains all elements in `other`.
  */
