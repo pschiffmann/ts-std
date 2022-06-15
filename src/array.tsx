@@ -9,8 +9,8 @@
  * Elements are compared with `compare`, which defaults to `Object.is`.
  */
 export function equals<T>(
-  a: T[],
-  b: T[],
+  a: readonly T[],
+  b: readonly T[],
   compare: (a: T, b: T) => boolean = Object.is
 ): boolean {
   const l = a.length;
@@ -22,7 +22,7 @@ export function equals<T>(
 }
 
 export function isValidIndexFor(
-  self: unknown[],
+  self: readonly unknown[],
   index: unknown
 ): index is number {
   return (
@@ -33,6 +33,6 @@ export function isValidIndexFor(
   );
 }
 
-export function last<T>(self: T[]): T | undefined {
+export function last<T>(self: readonly T[]): T | undefined {
   return self[self.length - 1];
 }
