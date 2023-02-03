@@ -2,13 +2,13 @@ import * as $Object from "./object.js";
 
 /**
  * A simple URL path router that supports path patterns like
- * `/thread/:threadId/page/:pageIndex`. Route segments that start with `:` match
+ * `thread/:threadId/page/:pageIndex`. Route segments that start with `:` match
  * any single input path segment and capture that value in `RouteMatch.params`.
  *
  * If multiple routes match the same path because of :param segments, the route
  * with an earlier literal match has the higher priority. For example, calling
- * `new Router(["/a/:p1/c/d", "/a/b/:p2/d"]).match("/a/b/c/d")` will return
- * `{ route: "/a/b/:p2/d", params: { p2: "c" } }`.
+ * `new Router(["a/:p1/c/d", "a/b/:p2/d"]).match("a/b/c/d")` will return
+ * `{ route: "a/b/:p2/d", params: { p2: "c" } }`.
  *
  * If multiple routes match the exact same path, the Router constructor throws
  * an error.
@@ -21,9 +21,8 @@ export class Router<R extends string> {
   #trie: TrieNode;
 
   match(path: string): Distribute<R> | null {
-    if (!path.startsWith("/")) return null;
-
-    const segments = path.substring(1).split("/");
+    console.log(JSON.stringify(this.#trie, null, 2));
+    const segments = path.split("/");
     let current = this.#trie;
     for (const segment of segments) {
       const child = current.children[segment];
@@ -51,17 +50,10 @@ export interface RouteMatch<R extends string> {
 
 class Route {
   constructor(pattern: string) {
-    if (!pattern.startsWith("/")) {
-      throw new Error(
-        `Invalid route pattern: "${pattern}". Routes need to start with "/".`
-      );
-    }
-
     const segments: (string | Wildcard)[] = [];
     const params: Record<string, number> = {};
 
-    const patternSegments =
-      pattern === "/" ? [] : pattern.substring(1).split("/").entries();
+    const patternSegments = pattern.split("/").entries();
     for (const [i, segment] of patternSegments) {
       if (segment.startsWith(":")) {
         const param = segment.substring(1);
