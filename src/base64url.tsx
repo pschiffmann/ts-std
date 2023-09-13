@@ -7,7 +7,7 @@ export function encode(bytes: Uint8Array): string {
   const triplets = Math.trunc(bytes.length / 3);
   const dangling = bytes.length % 3;
   const output = new Uint8Array(
-    triplets * 4 + (dangling === 0 ? 0 : dangling + 1)
+    triplets * 4 + (dangling === 0 ? 0 : dangling + 1),
   );
 
   for (let i = 0, o = 0; i < bytes.length; i += 3, o += 4) {
@@ -38,11 +38,11 @@ export function decode(base64: string): Uint8Array {
   const dangling = base64.length % 4;
   if (dangling === 1) {
     throw new Error(
-      "Invalid input length: `base64` can't contain a base64url encoded string."
+      "Invalid input length: `base64` can't contain a base64url encoded string.",
     );
   }
   const output = new Uint8Array(
-    quadruples * 3 + (dangling === 3 ? 2 : dangling === 2 ? 1 : 0)
+    quadruples * 3 + (dangling === 3 ? 2 : dangling === 2 ? 1 : 0),
   );
 
   for (let i = 0, o = 0; i < base64.length; i += 4, o += 3) {
@@ -94,7 +94,7 @@ function createTables(alphabet: string) {
     if (result === undefined || result === -1) {
       const char = String.fromCharCode(byte);
       throw new Error(
-        `Invalid input: "${char}" is not part of the base64url alphabet.`
+        `Invalid input: "${char}" is not part of the base64url alphabet.`,
       );
     }
     return result;
@@ -104,7 +104,7 @@ function createTables(alphabet: string) {
 }
 
 const [encodeByte, decodeByte] = createTables(
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_",
 );
 
 const mask6 = 0b111111;

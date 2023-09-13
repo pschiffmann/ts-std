@@ -22,7 +22,7 @@ export function equals<K, V>(a: Map<K, V>, b: Map<K, V>): boolean {
 export function putIfAbsent<K, V>(
   self: Map<K, V>,
   key: K,
-  ifAbsent: () => V
+  ifAbsent: () => V,
 ): V {
   if (self.has(key)) return self.get(key)!;
   const result = ifAbsent();

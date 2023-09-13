@@ -11,7 +11,7 @@
 export function equals<T>(
   a: readonly T[],
   b: readonly T[],
-  compare: (a: T, b: T) => boolean = Object.is
+  compare: (a: T, b: T) => boolean = Object.is,
 ): boolean {
   const l = a.length;
   if (b.length !== l) return false;
@@ -23,7 +23,7 @@ export function equals<T>(
 
 export function isValidIndexFor(
   self: readonly unknown[],
-  index: unknown
+  index: unknown,
 ): index is number {
   return (
     typeof index === "number" &&

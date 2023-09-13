@@ -59,7 +59,7 @@ class Route {
         const param = segment.substring(1);
         if (params.hasOwnProperty(param)) {
           throw new Error(
-            `Route "${pattern}" contains duplicate param name "${param}".`
+            `Route "${pattern}" contains duplicate param name "${param}".`,
           );
         }
         segments.push(wildcard);
@@ -114,7 +114,7 @@ class Route {
         }
       }
       throw new Error(
-        `Routes "${best.pattern}" and "${route.pattern}" match the same path.`
+        `Routes "${best.pattern}" and "${route.pattern}" match the same path.`,
       );
     }
     return best;
@@ -154,7 +154,7 @@ function constructTrie(routes: readonly Route[]): TrieNode {
         path: [...path, segment],
         routes: routes.filter(
           (route) =>
-            route.segments[i] === segment || route.segments[i] === wildcard
+            route.segments[i] === segment || route.segments[i] === wildcard,
         ),
         node: nextNode,
       });

@@ -4,7 +4,7 @@
     "declaration": true,
     "pretty": true,
     "target": "esnext",
-    "module": "esnext",
+    "module": "nodenext",
     "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
     "isolatedModules": true,
