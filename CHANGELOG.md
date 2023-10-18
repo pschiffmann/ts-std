@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.3.5 – 2023-10-18
+
+- Added `@pschiffmann/std/assert` export.
+- Added `@pschiffmann/std/dedent` export.
+
 ## 0.3.5 – 2023-09-13
 
 - Upgraded to TypeScript 5.2.2.
