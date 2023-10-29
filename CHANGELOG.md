@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## 0.3.5 – 2023-10-18
+## 0.3.7 – 2023-10-29
+
+- Added `$String.trimStart()` and `$String.trimEnd()`.
+
+## 0.3.6 – 2023-10-18
 
 - Added `@pschiffmann/std/assert` export.
 - Added `@pschiffmann/std/dedent` export.
